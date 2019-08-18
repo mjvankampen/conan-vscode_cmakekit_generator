@@ -35,7 +35,10 @@ class vscode_cmakekit(Generator):
 
             for name, value in self.conanfile.env.items():
                 if isinstance(value, list):
-                    value = str(get_env(name)).replace(old_env[name], "${{env:{name}}}".format(name=name))
+                    if name in old_env:
+                        value = str(get_env(name)).replace(old_env[name], "${{env:{name}}}").format(name=name)
+                    else:
+                        value = str(value)
                 value = _cmake_escape_backslash(value)
                 ret.append("\t\t\t\"{name}\": \"{value}\"".format(name=name, value=value))
             ret[1:-1] = [line + "," for line in ret[1:-1]]
