@@ -109,7 +109,7 @@ class vscode_cmakekit(Generator):
 
 class VSCodeCmakeKitGeneratorPackage(ConanFile):
     name = 'vscode_cmakekit_generator'
-    version = '0.2'
+    version = '0.3'
     description = "A generator for conan that can be used to build conan packages "
     "by invoking cmake instead of conan build"
     url = 'https://github.com/pepe82sh/ConanCmakeToolchainGenerator'
