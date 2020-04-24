@@ -56,11 +56,10 @@ class vscode_cmakekit(Generator):
         """
         with get_env_context_manager(self.conanfile):
             ret = ["\t\t\"cmakeSettings\": {"]
-            build_type = self.conanfile.settings.get_safe("build_type")
             generator = get_generator(self.conanfile.settings)
             self.conanfile.install_folder = ""
             def_builder = CMakeDefinitionsBuilder(
-                self.conanfile, generator=generator, forced_build_type=build_type)
+                self.conanfile, generator=generator)
             definitions = def_builder.get_definitions()
 
             for name, value in definitions.items():
