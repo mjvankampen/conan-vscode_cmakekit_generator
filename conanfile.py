@@ -60,7 +60,7 @@ class vscode_cmakekit(Generator):
             self.conanfile.install_folder = ""
             def_builder = CMakeDefinitionsBuilder(
                 self.conanfile, generator=generator)
-            definitions = def_builder.get_definitions()
+            definitions = def_builder.get_definitions(None)
 
             for name, value in definitions.items():
                 ret.append("\t\t\t\"{name}\": \"{value}\",".format(
@@ -108,7 +108,7 @@ class vscode_cmakekit(Generator):
 
 class VSCodeCmakeKitGeneratorPackage(ConanFile):
     name = 'vscode_cmakekit_generator'
-    version = '0.3'
+    version = '0.4'
     description = "A generator for conan that can be used to build conan packages "
     "by invoking cmake instead of conan build"
     url = 'https://github.com/pepe82sh/ConanCmakeToolchainGenerator'
